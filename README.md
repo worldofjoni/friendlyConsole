@@ -1,2 +1,2 @@
 # FriendlyConsole
-A C++ library with easy to use console commands and much more!
+A Windows C++ library with easy to use console commands and much more!
