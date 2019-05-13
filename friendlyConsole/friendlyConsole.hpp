@@ -74,7 +74,7 @@ namespace fc {
 	void stopSound();
 	void getPath(char path[200]);
 	void openExplorer(const char path[]);
-	void openExplorer(char path[], const char filename[]);
+	void openBrowser(const char url[]);
 
 
 

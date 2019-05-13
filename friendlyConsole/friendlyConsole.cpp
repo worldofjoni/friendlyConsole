@@ -199,9 +199,16 @@ namespace fc {
 		GetFullPathName(".", 200, path, &pszFileName);
 	}
 
+	// opens Fileexplorer at path
 	void openExplorer(const char path[])
 	{
 		ShellExecute(NULL, "explore", path, NULL, NULL, SW_SHOWDEFAULT);
+	}
+
+	// opens default browser at url
+	void openBrowser(const char url[])
+	{
+		ShellExecute(NULL, "open", url, NULL, NULL, SW_SHOWDEFAULT);
 	}
 
 
