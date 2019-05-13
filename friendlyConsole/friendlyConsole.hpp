@@ -9,7 +9,8 @@
 #ifndef _FRIENDLY_CONSOLE_
 #define _FRIENDLY_CONSOLE
 
-//#define SOUND // Unkomment this if you want to play Sounds (Make sure to add 'Winmm.lib' to your 'AditionalDependencys' under  'Project settings >> Linker >> Input' for this to work)
+#pragma comment(lib, "Winmm.lib")
+
 
 #define gotoxy fc::setCursorPos
 #define getrandom_int fc::getRandom
@@ -67,13 +68,13 @@ namespace fc {
 	void hideCursor();
 	void showCursor();
 	void beep(int freq, int duration = 300);
-
-#ifdef SOUND
 	void playSound(const char file[]);
 	void playSoundRepeat(const char file[]);
 	void playSoundWait(const char file[]);
 	void stopSound();
-#endif // SOUND
+	void getPath(char path[200]);
+	void openExplorer(const char path[]);
+	void openExplorer(char path[], const char filename[]);
 
 
 

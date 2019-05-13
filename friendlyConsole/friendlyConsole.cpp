@@ -5,6 +5,9 @@
 #include <chrono>
 
 
+//temp
+#include <iostream>
+
 
 namespace fc {
 
@@ -158,36 +161,48 @@ namespace fc {
 		
 	}
 
+	// beeps with Note as freq, default duration 300
 	void beep(int freq, int duration)
 	{
 		Beep(freq, duration);
 	}
 
-#ifdef SOUND
 
+	// plays file at relative path
 	void playSound(const char file[])
 	{
 		PlaySound(TEXT(file), NULL, SND_ASYNC);
 	}
 
+	// same as playSound, but repeats until stopSound
 	void playSoundRepeat(const char file[])
 	{
 		PlaySound(TEXT(file), NULL, SND_ASYNC | SND_LOOP);
 	}
 
+	// same as playSound, but returns not until sound finished
 	void playSoundWait(const char file[])
 	{
 		PlaySound(TEXT(file), NULL, SND_SYNC);
 	}
 
+	// stops playing sound
 	void stopSound()
 	{
 		PlaySound(NULL, NULL, NULL);
 	}
 
-#endif // SOUND
+	// overrides path with the current path, Note: in VS *Debugger* this is NOT the EXE path!
+	void getPath(char path[200])
+	{
+		char* pszFileName = NULL;
+		GetFullPathName(".", 200, path, &pszFileName);
+	}
 
-
+	void openExplorer(const char path[])
+	{
+		ShellExecute(NULL, "explore", path, NULL, NULL, SW_SHOWDEFAULT);
+	}
 
 
 
