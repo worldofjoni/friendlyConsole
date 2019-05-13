@@ -4,11 +4,12 @@
 // ####################################################
 
 
+
 #pragma once
 #ifndef _FRIENDLY_CONSOLE_
 #define _FRIENDLY_CONSOLE
 
-
+//#define SOUND // Unkomment this if you want to play Sounds (Make sure to add 'Winmm.lib' to your 'AditionalDependencys' under  'Project settings >> Linker >> Input' for this to work)
 
 #define gotoxy fc::setCursorPos
 #define getrandom_int fc::getRandom
@@ -34,6 +35,13 @@
 
 // defines diffrent Tones
 #define NOTE_C 	523
+#define NOTE_D 	587
+#define NOTE_E 	659
+#define NOTE_F 	698
+#define NOTE_G 	784
+#define NOTE_A 	880
+#define NOTE_B 	988
+#define NOTE_H 	NOTE_B // for german note
 
 namespace fc {
 
@@ -58,7 +66,15 @@ namespace fc {
 	void getCursorPosition(int& x, int& y);
 	void hideCursor();
 	void showCursor();
-	void beep(int freq, int duration);
+	void beep(int freq, int duration = 300);
+
+#ifdef SOUND
+	void playSound(const char file[]);
+	void playSoundRepeat(const char file[]);
+	void playSoundWait(const char file[]);
+	void stopSound();
+#endif // SOUND
+
 
 
 }

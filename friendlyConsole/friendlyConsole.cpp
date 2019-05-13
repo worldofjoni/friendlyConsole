@@ -163,6 +163,30 @@ namespace fc {
 		Beep(freq, duration);
 	}
 
+#ifdef SOUND
+
+	void playSound(const char file[])
+	{
+		PlaySound(TEXT(file), NULL, SND_ASYNC);
+	}
+
+	void playSoundRepeat(const char file[])
+	{
+		PlaySound(TEXT(file), NULL, SND_ASYNC | SND_LOOP);
+	}
+
+	void playSoundWait(const char file[])
+	{
+		PlaySound(TEXT(file), NULL, SND_SYNC);
+	}
+
+	void stopSound()
+	{
+		PlaySound(NULL, NULL, NULL);
+	}
+
+#endif // SOUND
+
 
 
 
