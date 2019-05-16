@@ -1,3 +1,9 @@
+// #################################################################
+// #    Library to easily change console colours and much more     #
+// #                      © Jonatan Ziegler                        #
+// #################################################################
+
+
 #pragma once
 #include <Windows.h>
 #include "friendlyConsole.hpp"
@@ -17,7 +23,34 @@ namespace fc {
 	static HWND hWindow = GetConsoleWindow();
 
 
-	//asdasdsas
+	//functions and structs for cout integration
+	// use in ostream to set color
+	Cmd color(Color color)
+	{
+		return { COLOR, color };
+	}
+
+	// use in ostream to set Backgroundcolor
+	Cmd backColor(Color color)
+	{
+		return { BACK_COLOR, color };
+	}
+
+	// overloaded Operator for in ostram controll
+	std::ostream& operator<<(std::ostream& os, Cmd cmd)
+	{
+		switch (cmd.action)
+		{
+		case COLOR:
+			fc::setTextColor(cmd.value);
+			break;
+		case BACK_COLOR:
+			fc::setBackgroundColor(cmd.value);
+			break;
+		}
+		return os;
+	}
+
 
 	// function to set text color
 	void setTextColor(Color color)

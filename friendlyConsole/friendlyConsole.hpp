@@ -1,7 +1,7 @@
-// ####################################################
-// #    Header to easily change console colours       #
-// #               by Jonatan Ziegler                 #
-// ####################################################
+// #################################################################
+// #    Library to easily change console colours and much more     #
+// #                      © Jonatan Ziegler                        #
+// #################################################################
 
 
 
@@ -10,7 +10,7 @@
 #define _FRIENDLY_CONSOLE
 
 #pragma comment(lib, "Winmm.lib")
-
+#include <ostream>
 
 #define gotoxy fc::setCursorPos
 #define getrandom_int fc::getRandom
@@ -49,6 +49,24 @@ namespace fc {
 
 	// abbr. for unsigned short
 	typedef unsigned short Color;
+
+	// functions and structs for cout integration
+	
+	enum Action
+	{
+		COLOR = 1,
+		BACK_COLOR = 2,
+	};
+
+	struct Cmd
+	{
+		Action action;
+		Color value;
+	};
+	
+	Cmd color(Color color);
+	Cmd backColor(Color color);
+	std::ostream& operator<<(std::ostream& os, Cmd cmd);
 
 	// function prototypes
 	void setTextColor(Color color);
