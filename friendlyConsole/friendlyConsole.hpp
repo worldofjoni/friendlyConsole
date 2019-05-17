@@ -11,7 +11,6 @@
 
 #pragma comment(lib, "Winmm.lib")
 #include <ostream>
-#include <Windows.h>
 
 #define gotoxy fc::setCursorPos
 #define getrandom_int fc::getRandom
@@ -51,7 +50,6 @@ namespace fc {
 
 	// abbr. for unsigned short
 	typedef unsigned short Color;
-	
 
 	// functions and structs for cout integration
 	

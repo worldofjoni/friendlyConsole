@@ -11,9 +11,6 @@
 #include <chrono>
 
 
-//temp
-#include <iostream>
-
 
 namespace fc {
 
