@@ -204,44 +204,57 @@ namespace fc {
 	// plays file at relative path
 	void playSound(const char file[])
 	{
-		PlaySound(TEXT(file), NULL, SND_ASYNC);
+		PlaySoundA(file, NULL, SND_ASYNC);
 	}
 
 	// same as playSound, but repeats until stopSound
 	void playSoundRepeat(const char file[])
 	{
-		PlaySound(TEXT(file), NULL, SND_ASYNC | SND_LOOP);
+		PlaySoundA(file, NULL, SND_ASYNC | SND_LOOP);
 	}
 
 	// same as playSound, but returns not until sound finished
 	void playSoundWait(const char file[])
 	{
-		PlaySound(TEXT(file), NULL, SND_SYNC);
+		PlaySoundA(file, NULL, SND_SYNC);
 	}
 
 	// stops playing sound
 	void stopSound()
 	{
-		PlaySound(NULL, NULL, NULL);
+		PlaySoundA(NULL, NULL, NULL);
 	}
 
-	// overrides path with the current path, Note: in VS *Debugger* this is NOT the EXE path!
-	void getPath(char path[200])
+	// returns current path, Note: in VS *Debugger* this is NOT the .exe path!
+	std::string getPath()
 	{
 		char* pszFileName = NULL;
-		GetFullPathName(".", 200, path, &pszFileName);
+		char path[200];
+		GetFullPathNameA(".", 200, path, &pszFileName);
+		return std::string(path);
 	}
 
-	// opens Fileexplorer at path
+
+	// opens file explorer at path
 	void openExplorer(const char path[])
 	{
-		ShellExecute(NULL, "explore", path, NULL, NULL, SW_SHOWDEFAULT);
+		ShellExecuteA(NULL, "explore", path, NULL, NULL, SW_SHOWDEFAULT);
+	}
+
+	void openExplorer(std::string path)
+	{
+		openExplorer(path.c_str());
 	}
 
 	// opens default browser at url
 	void openBrowser(const char url[])
 	{
-		ShellExecute(NULL, "open", url, NULL, NULL, SW_SHOWDEFAULT);
+		ShellExecuteA(NULL, "open", url, NULL, NULL, SW_SHOWDEFAULT);
+	}
+
+	void openBrowser(std::string url)
+	{
+		openBrowser(url.c_str());
 	}
 
 

@@ -11,6 +11,7 @@
 
 #pragma comment(lib, "Winmm.lib")
 #include <ostream>
+#include <Windows.h>
 
 #define gotoxy fc::setCursorPos
 #define getrandom_int fc::getRandom
@@ -44,11 +45,13 @@
 #define NOTE_B 	988
 #define NOTE_H 	NOTE_B // for german note
 
+
 namespace fc {
 
 
 	// abbr. for unsigned short
 	typedef unsigned short Color;
+	
 
 	// functions and structs for cout integration
 	
@@ -90,11 +93,11 @@ namespace fc {
 	void playSoundRepeat(const char file[]);
 	void playSoundWait(const char file[]);
 	void stopSound();
-	void getPath(char path[200]);
+	std::string getPath();
 	void openExplorer(const char path[]);
+	void openExplorer(std::string path);
 	void openBrowser(const char url[]);
-
-
+	void openBrowser(std::string url);
 
 }
 
