@@ -18,12 +18,12 @@
 
 // defines diffrent colors
 #define BLACK 0x0000
-#define BLUE_LIGHT 0x0001
-#define GREEN_LIGHT 0x0002
-#define CYAN_LIGHT 0x0003
-#define RED_LIGHT 0x0004
-#define MAGENTA_LIGHT 0x0005
-#define YELLOW_LIGHT 0x0006
+#define BLUE_DARK 0x0001
+#define GREEN_DARK 0x0002
+#define CYAN_DARK 0x0003
+#define RED_DARK 0x0004
+#define MAGENTA_DARK 0x0005
+#define YELLOW_DARK 0x0006
 #define LIGHT_GRAY 0x0007
 #define DARK_GRAY 0x0008
 #define BLUE 0x0009
@@ -33,6 +33,15 @@
 #define MAGENTA 0x000D
 #define YELLOW 0x000E
 #define WHITE 0x000F
+
+// old colors
+#define BLUE_LIGHT BLUE_DARK
+#define GREEN_LIGHT GREEN_DARK
+#define CYAN_LIGHT CYAN_DARK
+#define RED_LIGHT RED_DARK
+#define MAGENTA_LIGHT MAGENTA_DARK
+#define YELLOW_LIGHT YELLOW_DARK
+
 
 // defines diffrent Tones
 #define NOTE_C 	523
@@ -72,10 +81,13 @@ namespace fc {
 	// function prototypes
 	void setTextColor(Color color);
 	void setBackgroundColor(Color color);
-	inline void clearScreen();
+	void clearScreen();
 	void clearScreen(Color color);
 	void setTitle(const char name[]);
 	void setCursorPos(int x, int y);
+	void getCursorPosition(int& x, int& y);
+	void hideCursor();
+	void showCursor();
 	void setWindowSizePX(int width, int height); //size in Pixel (shouldn't use)
 	void setWindowSize(int width, int height, bool disableScrolling = true);	//Size in characters (when Font=Rasterschrift; FontSize=8x8)
 	void setWindowPos(int x, int y);
@@ -83,9 +95,7 @@ namespace fc {
 	int getRandom(int min, int max);
 	void waitMs(int ms);
 	void waitMsWithInterupt(int ms, bool(*func)());
-	void getCursorPosition(int& x, int& y);
-	void hideCursor();
-	void showCursor();
+	
 	void beep(int freq, int duration = 300);
 	void playSound(const char file[]);
 	void playSoundRepeat(const char file[]);
