@@ -1,6 +1,6 @@
 // #################################################################
 // #    Library to easily change console colours and much more     #
-// #                      © Jonatan Ziegler                        #
+// #                     by Jonatan Ziegler                        #
 // #################################################################
 
 
