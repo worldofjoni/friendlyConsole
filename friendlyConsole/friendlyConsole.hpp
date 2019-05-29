@@ -11,6 +11,7 @@
 
 #pragma comment(lib, "Winmm.lib")
 #include <ostream>
+typedef wchar_t WCHAR;
 
 #define gotoxy fc::setCursorPos
 #define getrandom_int fc::getRandom
@@ -53,6 +54,15 @@
 #define NOTE_B 	988
 #define NOTE_H 	NOTE_B // for german note
 
+// different fonts
+#define F_RASTERFONT L"Terminal"
+#define F_CONSOLAS L"Consolas"
+#define F_COURIER_NEW L"Courier New"
+#define F_LUCIDA_CONSOLE L"Lucida Console"
+#define F_MS_GOTHIC L"MS Gothic"
+#define F_N_SIM_SUN L"NSimSun"
+#define F_SIM_SUN_EXT_B L"SimSun-ExtB"
+
 
 namespace fc {
 
@@ -91,11 +101,9 @@ namespace fc {
 	void setWindowSizePX(int width, int height); //size in Pixel (shouldn't use)
 	void setWindowSize(int width, int height, bool disableScrolling = true);	//Size in characters (when Font=Rasterschrift; FontSize=8x8)
 	void setWindowPos(int x, int y);
-	void setFontSize(int width, int height = 0); // experimental
 	int getRandom(int min, int max);
 	void waitMs(int ms);
 	void waitMsWithInterupt(int ms, bool(*func)());
-	
 	void beep(int freq, int duration = 300);
 	void playSound(const char file[]);
 	void playSoundRepeat(const char file[]);
@@ -108,7 +116,10 @@ namespace fc {
 	void openBrowser(std::string url);
 	bool isKeyPressed(int vKey);
 	bool isKeyPressed(char key);
-
+	void getFontSize(int& x, int& y);
+	bool setFont(const wchar_t font[32]);
+	bool setFontSize(int width, int height = 0); // height oly for raster-font, for each other use only width as size
+	bool setBold(bool bold);
 }
 
 #endif // !_FRIENDLY_CONSOLE_
