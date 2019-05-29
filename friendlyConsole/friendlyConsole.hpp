@@ -11,7 +11,6 @@
 
 #pragma comment(lib, "Winmm.lib")
 #include <ostream>
-typedef wchar_t WCHAR;
 
 #define gotoxy fc::setCursorPos
 #define getrandom_int fc::getRandom
