@@ -3,8 +3,6 @@
 // #                     by Jonatan Ziegler                        #
 // #################################################################
 
-
-
 #pragma once
 #ifndef _FRIENDLY_CONSOLE_
 #define _FRIENDLY_CONSOLE
@@ -12,6 +10,8 @@
 #pragma comment(lib, "Winmm.lib")
 #include <ostream>
 
+
+// compatibility defines
 #define gotoxy fc::setCursorPos
 #define getrandom_int fc::getRandom
 #define wait fc::waitMs
@@ -64,7 +64,6 @@
 
 
 namespace fc {
-
 
 	// abbr. for unsigned short
 	typedef unsigned short Color;
