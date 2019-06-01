@@ -139,12 +139,19 @@ namespace fc {
 	// returns a random Value
 	int getRandom(int min, int max)
 	{
+		if (min > max)
+		{
+			int i = min;
+			min = max;
+			max = i;
+		}
+		int diff = max - min;
 		
 		std::random_device dev;
 		std::mt19937 rng(dev());
-		std::uniform_int_distribution<std::mt19937::result_type> dist6(min, max);
-		dist6(rng); dist6(rng); dist6(rng); dist6(rng); dist6(rng); dist6(rng); dist6(rng); dist6(rng);
-		return dist6(rng);
+		std::uniform_int_distribution<std::mt19937::result_type> dist(0, diff);
+		dist(rng); dist(rng); dist(rng); dist(rng); dist(rng); dist(rng); dist(rng); dist(rng);
+		return dist(rng) + min;
 		
 	}
 
