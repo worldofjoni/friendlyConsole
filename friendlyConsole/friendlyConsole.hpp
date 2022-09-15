@@ -16,7 +16,7 @@
 #define getrandom_int fc::getRandom
 #define wait fc::waitMs
 
-// defines diffrent colors
+// defines different colors
 #define BLACK 0x0000
 #define BLUE_DARK 0x0001
 #define GREEN_DARK 0x0002
@@ -43,7 +43,7 @@
 #define YELLOW_LIGHT YELLOW_DARK
 
 
-// defines diffrent Tones
+// defines different Tones
 #define NOTE_C 	523
 #define NOTE_D 	587
 #define NOTE_E 	659
@@ -101,7 +101,7 @@ namespace fc {
 	void setWindowPos(int x, int y);
 	int getRandom(int min, int max);
 	void waitMs(int ms);
-	void waitMsWithInterupt(int ms, bool(*func)());
+	void waitMsWithInterrupt(int ms, bool(*func)());
 	void beep(int freq, int duration = 300);
 	void playSound(const char file[]);
 	void playSoundRepeat(const char file[]);
@@ -116,7 +116,7 @@ namespace fc {
 	bool isKeyPressed(char key);
 	void getFontSize(int& x, int& y);
 	bool setFont(const wchar_t font[32]);
-	bool setFontSize(int width, int height = 0); // height oly for raster-font, for each other use only width as size
+	bool setFontSize(int width, int height = 0); // height only for raster-font, for each other use only width as size
 	bool setBold(bool bold);
 }
 
