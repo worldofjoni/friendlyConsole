@@ -24,13 +24,13 @@ namespace fc {
 		return { COLOR, color };
 	}
 
-	// use in ostream to set Backgroundcolor
+	// use in ostream to set background color
 	Cmd backColor(Color color)
 	{
 		return { BACK_COLOR, color };
 	}
 
-	// overloaded Operator for in ostram controll
+	// overloaded Operator for in ostram control
 	std::ostream& operator<<(std::ostream& os, Cmd cmd)
 	{
 		switch (cmd.action)
@@ -50,17 +50,17 @@ namespace fc {
 	{
 		Color data;
 		CONSOLE_SCREEN_BUFFER_INFO info;
-		GetConsoleScreenBufferInfo(hStdOut, &info);			// gets current coler
+		GetConsoleScreenBufferInfo(hStdOut, &info);			// gets current color
 		data = (info.wAttributes & 0xFFF0) | color;			// adds wanted color
 		SetConsoleTextAttribute(hStdOut, data);				// changes new color
 	}
 
-	// function to set backgroundcolor
+	// function to set background color
 	void setBackgroundColor(Color color)
 	{
 		Color data;
 		CONSOLE_SCREEN_BUFFER_INFO info;
-		GetConsoleScreenBufferInfo(hStdOut, &info);			// gets current coler
+		GetConsoleScreenBufferInfo(hStdOut, &info);			// gets current color
 		data = (info.wAttributes & 0xFF0F) | (color << 4);	// adds wanted color
 		SetConsoleTextAttribute(hStdOut, data);				// changes new color
 	}
@@ -71,7 +71,7 @@ namespace fc {
 		system("cls");
 	}
 
-	// function taht clears the screen and sets it to a color
+	// function that clears the screen and sets it to a color
 	void clearScreen(Color color) {
 		setBackgroundColor(color);
 		clearScreen();
@@ -84,7 +84,7 @@ namespace fc {
 		SetConsoleTitleA(name);
 	}
 
-	// sets the actual cursor position (equivilent to gotoxy)
+	// sets the actual cursor position (equivalent to gotoxy)
 	void setCursorPos(int x, int y)
 	{
 		COORD pos;
@@ -156,8 +156,8 @@ namespace fc {
 		while (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - t1).count() < ms);
 	}
 
-	// waits a specific amout of time or until functionreturns true
-	void waitMsWithInterupt(int ms, bool(*func)())
+	// waits a specific amount of time or until function returns true
+	void waitMsWithInterrupt(int ms, bool(*func)())
 	{
 		auto t1 = std::chrono::system_clock::now();
 		while (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - t1).count() < ms)
